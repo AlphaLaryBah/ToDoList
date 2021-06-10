@@ -1,4 +1,4 @@
-const mongoose= require('mongoose')
+const mongoose = require('mongoose')
 
 
 let today = new Date();
@@ -32,17 +32,5 @@ const data = {
     body: " take salt pills"
 }
 
-//.SAVE() TO SAVE THE DATA TO MONGO
 
-// const newTodoList = new whatTodo(data);
-
-
-// newTodoList.save((error) => {
-//     if (error) {
-//         console.log("OOOps, something went wrong");
-//     } else {
-//         console.log("Data has been saved");
-//     }
-
-// });
 module.exports = whatTodo;

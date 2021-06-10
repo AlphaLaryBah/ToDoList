@@ -2,38 +2,40 @@
 import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import {Card, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import Date from './components/Date'
+import GettingData from "./components/GettingData"
+
 
 
 function App() {
-  const [todos, setTodos] = React.useState([])
-  console.log(todos)
+  // const [todos, setTodos] = React.useState([])
 
-  //a new todo to add into todo list
-  function addTodo(todo) {
-    //new todo added to old ...todos array
-    setTodos([todo, ...todos])
-  }
+  // //a new todo to add into todo list
+  // function addTodo(todo) {
+  //   //new todo added to old ...todos array
+  //   setTodos([todo, ...todos])
+  // }
 
-  function toggleComplete(id) {
-    setTodos(
-      todos.map(todo => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed
-          };
-        }
-        return todo;
-      })
-    )
+  // function toggleComplete(id) {
+  //   setTodos(
+  //     todos.map(todo => {
+  //       if (todo.id === id) {
+  //         return {
+  //           ...todo,
+  //           completed: !todo.completed
+  //         };
+  //       }
+  //       return todo;
+  //     })
+  //   )
 
-  }
-  function removeTodo(id) {
-    setTodos(todos.filter(todo => todo.id !== id));
+  // }
+  // function removeTodo(id) {
+  //   setTodos(todos.filter(todo => todo.id !== id));
 
-  }
+  // }
+
   return (
     <div className="d-flex justify-content-center container-fluid w-100">
       <div className="row  sm-w-50  mt-5 ">
@@ -46,11 +48,13 @@ function App() {
             <CardText className=" ">
 
             </CardText>
-            <TodoForm addTodo={addTodo} />
-            <TodoList todos={todos}
+            {/* <TodoForm addTodo={addTodo} /> */}
+            {/* <TodoList todos={todos}
               toggleComplete={toggleComplete}
               removeTodo={removeTodo}
-            />
+            /> */}
+            <GettingData />
+
           </CardBody>
         </Card>
       </div>
