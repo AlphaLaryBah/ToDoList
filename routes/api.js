@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 
     whatTodo.find({})
         .then((data) => {
-            console.log('Data: ', data);
+            // console.log('Data: ', data);
             res.json(data);
 
         })
@@ -21,20 +21,17 @@ router.get("/", (req, res) => {
         });
 
 
-
-
-
 });
 
 
 // RECEIVES DATA FROM REACT
 
 router.post("/save", (req, res) => {
-    console.log('Body:', req.body)
+    console.log('Body:', req.body.isCompleted)
     const data = req.body;
     // new instance of what todo
     const newToList = new whatTodo(data);
-
+    console.log(data.isCompleted)
     // save
 
     newToList.save((error) => {
@@ -48,14 +45,8 @@ router.post("/save", (req, res) => {
         }
     });
 
-});
-router.get("/name", (req, res) => {
-    const data = {
-        username: "Maimouna",
-        age: 33
 
-    };
-    res.json(data);
+
 });
 
 
