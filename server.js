@@ -10,8 +10,7 @@ const path = require('path');
 
 
 const app = express();
-//ROUTES
-const routes = require('./routes/api')
+
 
 const PORT = process.env.PORT || 8080;
 
@@ -19,7 +18,8 @@ const PORT = process.env.PORT || 8080;
 const MONGODB_URI = process.env.MONGODB_URI
 mongoose.connect(MONGODB_URI || "mongodb://localhost:27017/todolistDB", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 mongoose.connection.on('connected', () => {
@@ -30,7 +30,8 @@ mongoose.connection.on('connected', () => {
 //JSON FOR INCOMING POST DATA to parse
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+//ROUTES
+const routes = require('./routes/api');
 
 
 

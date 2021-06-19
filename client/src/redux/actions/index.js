@@ -7,6 +7,17 @@ export const fetchData = () => async dispatch => {
     dispatch({ type: 'FETCH_DATA', payload: response.data });
 
 
+};
+
+export const selectItem = (item) => {
+    //return an ction
+    return {
+        type: 'ITEM_SELECTED',
+        payload: item
+
+    }
+
 }
+
 
 

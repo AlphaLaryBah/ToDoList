@@ -27,11 +27,14 @@ router.get("/", (req, res) => {
 // RECEIVES DATA FROM REACT
 
 router.post("/save", (req, res) => {
-    console.log('Body:', req.body.isCompleted)
+    console.log('Body:', req.body.delete)
     const data = req.body;
+    const toBeDeleted = req.body.delete;
+
     // new instance of what todo
     const newToList = new whatTodo(data);
-    console.log(data.isCompleted)
+
+    // console.log(data)
     // save
 
     newToList.save((error) => {
@@ -44,10 +47,15 @@ router.post("/save", (req, res) => {
 
         }
     });
-
+    whatTodo.findByIdAndRemove(toBeDeleted, function (err) {
+        if (!err) {
+            console.log("Successfully Deleted the Item")
+        }
+    })
 
 
 });
+
 
 
 module.exports = router;
