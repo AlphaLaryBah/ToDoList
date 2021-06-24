@@ -5,6 +5,7 @@ import axios from "axios";
 export const fetchData = () => async dispatch => {
     const response = await axios.get('http://localhost:8080/api');
     dispatch({ type: 'FETCH_DATA', payload: response.data });
+    // console.log(response)
 
 
 };
@@ -19,5 +20,11 @@ export const selectItem = (item) => {
 
 }
 
+// export const doneData = () => async dispatch => {
+//     const response = await axios.get('http://localhost:8080/api');
+//     dispatch({ type: 'DONE_DATA', payload: response });
+//     console.log(response)
 
+
+// };
 

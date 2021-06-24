@@ -15,10 +15,10 @@ function CalendarComponent() {
             <Calendar
                 onChange={onChange}
                 value={date}
-                className="shadow-lg  p-3 mb-3 bg-white rounded "
+                className="shadow-lg  p-3 mb-3 bg-white rounded w-100"
             />
-            {date.toString()}
-            {console.log(date)}
+            {/* {date.toString()} */}
+            {/* {console.log(date)} */}
         </div>
     );
 }

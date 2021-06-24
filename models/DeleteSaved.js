@@ -16,30 +16,28 @@ let day = today.toLocaleDateString("en-US", options);
 const Schema = mongoose.Schema;
 
 const todoListSchema = new Schema({
-    
     body: {
         type: String,
         trim: true,
-        required: true // add some required
+        required: true 
     },
-    // delete: String,
     date: {
         type: String,
         default: day
     }
-    
+
 },
     {
         timestamps: true,
-           
 
-    }
-    // { strict: true }
+
     
-);
+    
+
+});
 
 //MODEL
-const whatTodo = mongoose.model('whatTodo', todoListSchema);
+const Deleted = mongoose.model('Deleted', todoListSchema);
 
 
 // //SAVING DATA TO MONGO DATABASE
@@ -48,4 +46,4 @@ const whatTodo = mongoose.model('whatTodo', todoListSchema);
 // }
 
 
-module.exports =  whatTodo ;
+module.exports = Deleted;

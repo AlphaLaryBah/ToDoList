@@ -1,0 +1,8 @@
+input:checked+p {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+input[type="checkbox"] {
+  margin: 20px;
+}

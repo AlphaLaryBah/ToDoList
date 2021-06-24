@@ -3,25 +3,38 @@ const express = require('express');
 const router = express.Router();
 
 const whatTodo = require('../models/newlist')
-
+const Deleted = require('../models/DeleteSaved')
 
 
 
 router.get("/", (req, res) => {
-
+    
     whatTodo.find({})
         .then((data) => {
+           
             // console.log('Data: ', data);
             res.json(data);
-
+            
         })
         .catch((error) => {
             console.log('error: ', error);
 
-        });
+        })
+    
+    // Deleted.find({})
+    //     .then((data) => {
+    //         // console.log('Data deleted: ', data);
+    //         //  res.end(data);
 
+    //     })
+    //     .catch((error) => {
+    //         console.log('error: ', error);
 
-});
+    //     })
+
+})
+    
+
 
 
 // RECEIVES DATA FROM REACT
@@ -29,14 +42,10 @@ router.get("/", (req, res) => {
 router.post("/save", (req, res) => {
     console.log('Body:', req.body.delete)
     const data = req.body;
-    const toBeDeleted = req.body.delete;
-
+    
     // new instance of what todo
     const newToList = new whatTodo(data);
-
-    // console.log(data)
     // save
-
     newToList.save((error) => {
         if (error) {
             res.status(500).json({ msg: 'Sorry, internal server error' })
@@ -47,13 +56,45 @@ router.post("/save", (req, res) => {
 
         }
     });
+    const toBeDeleted = req.body.delete
+    // console.log(toBeDeleted)
     whatTodo.findByIdAndRemove(toBeDeleted, function (err) {
         if (!err) {
             console.log("Successfully Deleted the Item")
         }
     })
+});
 
 
+
+
+
+
+
+
+
+//DELETES ALL
+router.post("/delete", (req, res) => {
+    // console.log('Delete:', req.body.delete)
+    const data = req.body.delete;
+
+    // new instance of what todo
+    const deletedList = new Deleted(data);
+
+    // console.log(data)
+    // save
+    
+    deletedList.save((error) => {
+        if (error) {
+            res.status(500).json({ msg: 'Sorry, internal server error' })
+        } else {
+            res.json({
+                msg: "Data Has been saved"
+            });
+
+        }
+    });
+   
 });
 
 

@@ -25,11 +25,20 @@ function App() {
             <CardText className=" ">
 
             </CardText>
+            <TodoForm />
 
-            <TodoForm  />
-            
-            <MyData />
-            <Selected />
+            <div className="row">
+              <div className="col-sm-6">
+                <MyData />
+
+              </div>
+              <div className="col-sm-6 ">
+                <Selected />
+
+              </div>
+
+            </div>
+
           </CardBody>
         </Card>
       </div>
