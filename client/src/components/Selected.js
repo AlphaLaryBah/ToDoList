@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
+import { selectItem } from '../redux/actions'
 const Selected = ({ selected }) => {
 
     const payload = {
@@ -18,7 +18,8 @@ const Selected = ({ selected }) => {
             console.log("Data has been sent to the Sever")
         })
         .catch(() => {
-            console.log("Delete Data  NOT sent to the Sever")
+            console.log("Delete Data  NOT sent to the Sever");
+
 
         });
     axios({
@@ -28,6 +29,7 @@ const Selected = ({ selected }) => {
     })
         .then(() => {
             console.log("Data has been sent to the Sever")
+
         })
         .catch(() => {
             console.log("Delete Data  NOT sent to the Sever")
@@ -56,7 +58,7 @@ const Selected = ({ selected }) => {
 
 }
 const mapStateToProps = (state) => {
-    // console.log(state.selected)
+    // console.log(state)
 
 
     return {
@@ -65,5 +67,5 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps)(Selected);
+export default connect(mapStateToProps, { selectItem })(Selected);
 

@@ -9,6 +9,6 @@ import Done from './Done'
 export default combineReducers({
     dataFromServer: SerVdataReducer,
     selected: selectedList,
-    // done:Done
+    done:Done
 
 });

@@ -1,6 +1,6 @@
-// import React from 'react';
-// // import { Button, Input } from 'reactstrap';
-// import { connect } from 'react-redux';
+import React from 'react';
+// import { Button, Input } from 'reactstrap';
+import { connect } from 'react-redux';
 // import { doneData } from '../redux/actions';
 // import axios from 'axios'
 // class MyData extends React.Component {
@@ -11,22 +11,7 @@
 //          this.props.doneData();
 //         // const d = [];
 //         // console.log(d)
-//         // axios.get('http://localhost:8080/api')
-//         //     .then((response) => {
-//         //         console.log(response)
-//         //         const data = response.data;
-//         //         d.push(data)
-//         //         // this.setState({ dataServer: data })
-//         //         console.log(`Deleted ${data}`)
-//         //         console.log('hello')
-
-//         //         console.log("Data has been received")
-//         //     })
-//         //     .catch(() => {
-//         //         console.log("Data  NOT  received")
-
-//         //     })
-
+       
 //     }
 // //FETCH DATA FROM SERVER
 //     //  dataFromServer = () => {
@@ -83,4 +68,4 @@
 
 // }
 
-// export default connect(mapStateToProps, { doneData, })(MyData);
+// export default connect(mapStateToProps, { doneData })(MyData);

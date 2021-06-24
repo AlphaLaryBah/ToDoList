@@ -5,10 +5,9 @@
 // const Deleted = require('../models/DeleteSaved')
 
 
-// deletedN.get("/", (req, res) => {
+// deletedN.get("/deleted", (req, res) => {
 //     Deleted.find({})
 //         .then((data) => {
-
 //             console.log('Data deleted: ', data);
 //              res.json(data);
 

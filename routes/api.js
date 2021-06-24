@@ -23,8 +23,8 @@ router.get("/", (req, res) => {
     
     // Deleted.find({})
     //     .then((data) => {
-    //         // console.log('Data deleted: ', data);
-    //         //  res.end(data);
+    //         console.log('Data deleted: ', data);
+    //         //  res.json(data);
 
     //     })
     //     .catch((error) => {
@@ -34,6 +34,23 @@ router.get("/", (req, res) => {
 
 })
     
+
+
+router.get("/delete", (req, res) => {
+
+    Deleted.find({})
+        .then((data) => {
+            console.log('Data deleted: ', data);
+             res.json(data);
+
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+
+        })
+
+})
+
 
 
 
@@ -94,6 +111,16 @@ router.post("/delete", (req, res) => {
 
         }
     });
+    // Deleted.find({})
+    //     .then((data) => {
+    //         console.log('Data deleted: ', data);
+    //           res.json(data);
+
+    //     })
+    //     .catch((error) => {
+    //         console.log('error: ', error);
+
+    //     })
    
 });
 
