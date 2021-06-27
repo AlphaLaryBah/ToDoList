@@ -11,11 +11,11 @@ function CalendarComponent() {
     }
 
     return (
-        <div className="shadow-lg  p-3 mb-3 bg-white rounded">
+        <div className="shadow-lg  p-1 mb-3 bg-white rounded">
             <Calendar
                 onChange={onChange}
                 value={date}
-                className="shadow-lg  p-3 mb-3 bg-white rounded w-100"
+                className="shadow-lg  p-1 mb-3 bg-white rounded w-100"
             />
             {/* {date.toString()} */}
             {/* {console.log(date)} */}

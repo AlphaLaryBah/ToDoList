@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchData, selectItem } from '../redux/actions';
-import { Button, Form, Input } from 'reactstrap';
-import { BsPlus } from "react-icons/bs";
-// import { selectItem } from '../redux/actions';
+import { Button, Input, Table } from 'reactstrap';
+import { BsCheckBox, BsTrash} from "react-icons/bs";
 import axios from 'axios';
 import './Mydata.css';
-
+import DeleToggle from "./DeteToggle";
+import TogleCalend from './TogleCalend'
 
 class MyData extends React.Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class MyData extends React.Component {
         this.setState({
             [name]: value
         });
-        
+
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -56,20 +56,20 @@ class MyData extends React.Component {
 
             })
         this.setState({ query: "" })
-        
-        
+
+
     }
     componentDidMount() {
         //function from actions
         this.props.fetchData();
         this.getDeletData();
-        
+
 
     }
     getDeletData = () => {
         axios.get('http://localhost:8080/api/delete')
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 this.setState({ deletedList: response.data })
                 console.log("Deleted Data has been received")
             })
@@ -80,10 +80,40 @@ class MyData extends React.Component {
 
     }
     mapDelete() {
+        // let time= this.state.query
+        // const result = this.state.deletedList.filter(dates => {
+        //     console.log(dates.createdAt)
+        //     return dates.createdAt === this.state.query
+        // });
+        // console.log("result" + result)
+
         return this.state.deletedList.map(deleted => {
+
             return <div key={deleted._id}>
-                <p>{deleted.date}</p>
-                <p>{deleted.body}</p>
+                <ul>
+                    <li>
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th> Created</th>
+                                    <th> Task</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">{deleted.date}</th>
+                                    <td>  {deleted.body} </td> 
+                                    <td>  <BsCheckBox className="text-danger" /></td>
+
+                                </tr>
+
+                            </tbody>
+                        </Table>
+
+                    </li>
+                </ul>
+
             </div>
 
         })
@@ -100,7 +130,7 @@ class MyData extends React.Component {
                 <div className="row">
                     <div className="col d-flex justify-content-end">
                         <form>
-                            <Button type="submit" className="float-right" outline color="danger" onClick={() => this.props.selectItem(list)}>Delete</Button>
+                            <Button type="submit" className="float-right" outline color="danger" onClick={() => this.props.selectItem(list)}>Delete <BsTrash /></Button>
                         </form>
                     </div>
                     {/* <div className="row"> */}
@@ -115,7 +145,7 @@ class MyData extends React.Component {
                     </div>
 
                 </div>
-            
+
 
             </div>
             )
@@ -137,7 +167,7 @@ class MyData extends React.Component {
 
                 </div>
                 <div className="col-sm-6">
-                    <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
+                    {/* <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
                         <label>                        Find Old List By Date
                         </label>
                         <Form onSubmit={this.handleSubmit} className="form-control rounded ">
@@ -146,7 +176,7 @@ class MyData extends React.Component {
 
                                 <div className="row">
                                     <div className="col">
-                                        Start Date: <Input
+                                         <Input
                                             placeholder="Enter Date"
                                             name="query"
                                             type="date"
@@ -168,20 +198,30 @@ class MyData extends React.Component {
                             </div>
 
                         </Form>
-                    </div>
+                    </div> */}
 
-                    <div className=" shadow-lg  p-3 mb-3 bg-white rounded ">
-                        {this.mapDelete()}
+                    <div className=" shadow-lg  p-1 mb-3 bg-dark rounded  ">
+                        <div className='d-flex  '>
+                            <DeleToggle erased={this.mapDelete()} />
+
+                        </div>
+                        
+
+                    
+                    <div className=' '>
+                        <TogleCalend />
+
+
+                    </div>
 
                     </div>
                 </div>
 
             </div>
-
         </div>
 
+
         );
-        // })
     }
 
 }

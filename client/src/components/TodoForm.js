@@ -1,7 +1,7 @@
 import React from 'react';
 // import uuid from 'uuid';
 import { Button, Form, Input } from 'reactstrap';
-import { BsPlus } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { fetchData} from '../redux/actions';
@@ -57,7 +57,7 @@ class TodoForm extends React.Component{
     render() {
         return (
             <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
-                <Form onSubmit={this.handleSubmit} className="form-control rounded bg-dark">
+                <Form onSubmit={this.handleSubmit} className="form-control rounded ">
                     <div className="container-fluid">
                     
 
@@ -74,9 +74,9 @@ class TodoForm extends React.Component{
 
                                     <Button
                                         type="submit"
-                                        className=" form-control bg-success mt-3 text-center rounded"
+                                        className=" form-control  mt-3 text-center rounded"
                                     
-                                    ><BsPlus /> Add To List</Button>
+                                    ><BsPlusCircle /> Add To List</Button>
 
 
                                 </div>

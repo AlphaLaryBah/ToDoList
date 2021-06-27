@@ -2,13 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
-
+let search = "";
 const whatTodo = require('../models/newlist')
 const Deleted = require('../models/DeleteSaved')
 
 
 
 router.get("/", (req, res) => {
+
 
     whatTodo.find({})
         .then((data) => {
@@ -92,31 +93,21 @@ router.post("/delete", (req, res) => {
 
 
 router.get("/delete", (req, res) => {
+    console.log("get"+req.body.query)
     // //INCREMENT CURRENT DATE BY A DAY
     // let laterDate = new Date(2021 - 06 - 23);
     // // add a day
     // laterDate.setDate(laterDate.getDate() + 1);
 
     // console.log(laterDate)
-    Deleted.find({
-        createdAt: {
-            $gte: new Date('2021-06-23'),
-            $lte: new Date('2021-06-24')
-        }
-    })
-        .then((data) => {
-            console.log('DateQuery: ', data);
-              res.json(data);
-
-        })
-        .catch((error) => {
-            console.log('error: ', error);
-
-        })
-
-    // Deleted.find({})
+    // Deleted.find({
+    //     createdAt: {
+    //         $gte: new Date('2021-06-23'),
+    //         $lte: new Date('2021-06-24')
+    //     }
+    // })
     //     .then((data) => {
-    //         // console.log('Data deleted: ', data);
+    //         console.log('DateQuery: ', data);
     //         res.json(data);
 
     //     })
@@ -125,26 +116,36 @@ router.get("/delete", (req, res) => {
 
     //     })
 
-})
+    Deleted.find({})
+        .then((data) => {
+            // console.log('Data deleted: ', data);
+            res.json(data);
 
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+
+        })
+
+})
 
 router.post("/query", (req, res) => {
     console.log('Body:', req.body)
-    global.data = req.body
-    console.log(global.data)
 
+    search = req.body
+    
+    // console.log("global" + search)
 
-
+    //INCREMENT CURRENT DATE BY A DAY
+    let laterDate = new Date(req.body.query);
+    // add a day
+    laterDate.setDate(laterDate.getDate() + 1);
+// console.log(laterDate)
 
 });
-console.log("global" + global.data)
 
 
-//INCREMENT CURRENT DATE BY A DAY
-let laterDate = new Date('2021-06-23');
-// add a day
-laterDate.setDate(laterDate.getDate() + 1);
-// console.log(laterDate)
+
 
 
 module.exports = router;
