@@ -51,7 +51,7 @@ class TodoForm extends React.Component{
                 console.log("Data  NOT sent to the Sever")
 
             })
-       
+       this.setState({task:""})
 
     }
     render() {

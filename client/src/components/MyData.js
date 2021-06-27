@@ -22,37 +22,69 @@ class MyData extends React.Component {
 
 
 
-    handleTaskInputChange(e) {
-        this.setState({ task: e.target.value })
+    handleTaskInputChange(event) {
+        const target = event.target;
+        const name = target.name;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
 
+        this.setState({
+            [name]: value
+        });
+        
     }
     handleSubmit(e) {
         e.preventDefault();
+
+        console.log(this.state.query)
+        //SERVER
+        const payload = {
+            body: this.state.query,
+
+        }
+        //  console.log(`payload Todoform : ${payload}`);
+
+        axios({
+            url: 'http://localhost:8080/api/query',
+            method: 'POST',
+            data: payload
+        })
+            .then(() => {
+                console.log("Query Data has been sent to the Sever")
+            })
+            .catch(() => {
+                console.log(" Query Data  NOT sent to the Sever")
+
+            })
+        this.setState({ query: "" })
+        
+        
     }
     componentDidMount() {
         //function from actions
         this.props.fetchData();
         this.getDeletData();
+        
+
     }
     getDeletData = () => {
         axios.get('http://localhost:8080/api/delete')
             .then((response) => {
                 console.log(response.data)
                 this.setState({ deletedList: response.data })
-                console.log("Data has been received")
+                console.log("Deleted Data has been received")
             })
             .catch(() => {
-                console.log("Data  NOT  received")
+                console.log(" Deleted Data  NOT  received")
 
             })
 
     }
     mapDelete() {
         return this.state.deletedList.map(deleted => {
-            return <di>
+            return <div key={deleted._id}>
                 <p>{deleted.date}</p>
                 <p>{deleted.body}</p>
-            </di>
+            </div>
 
         })
 
@@ -83,26 +115,10 @@ class MyData extends React.Component {
                     </div>
 
                 </div>
-                {/* </div> */}
-
-
-
-                {/* <div className="" >
-                    <div className='content' >
-                        
-                     
-
-                    </div>
-
-                </div> */}
-
+            
 
             </div>
             )
-
-
-
-
 
         });
     }
@@ -122,29 +138,31 @@ class MyData extends React.Component {
                 </div>
                 <div className="col-sm-6">
                     <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
-                        <Form onSubmit={this.handleSubmit} className="form-control rounded bg-dark">
+                        <label>                        Find Old List By Date
+                        </label>
+                        <Form onSubmit={this.handleSubmit} className="form-control rounded ">
                             <div className="container-fluid">
 
 
-                                <div className="rov">
+                                <div className="row">
                                     <div className="col">
-                                        <Input
+                                        Start Date: <Input
                                             placeholder="Enter Date"
                                             name="query"
                                             type="date"
                                             value={this.state.query}
                                             onChange={this.handleTaskInputChange} />
+                                        
+                                            <div className="col ">
 
-                                        <div className="col ">
+                                                <Button
+                                                    type="submit"
+                                                    className=" form-control bg-primary mt-3 text-center rounded"
 
-                                            <Button
-                                                type="submit"
-                                                className=" form-control bg-primary mt-3 text-center rounded"
-
-                                            > Find Old Task</Button>
+                                                > Find Old Task</Button>
+                                            </div>
 
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>

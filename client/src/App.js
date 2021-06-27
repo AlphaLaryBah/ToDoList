@@ -28,11 +28,11 @@ function App() {
             <TodoForm />
 
             <div className="row">
-              <div className="col-sm-6">
+              <div className="col-sm-9">
                 <MyData />
 
               </div>
-              <div className="col-sm-6 ">
+              <div className="col ">
                 <Selected />
 
               </div>
