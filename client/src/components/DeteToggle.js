@@ -8,8 +8,8 @@ const DeleToggle = (props) => {
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <div className=''>
-            <Button color="outline-light" onClick={toggle} style={{ marginBottom: '1rem' }} className="text-center"><BsFolderCheck/> Task History</Button>
+        <div className='p-3 mb-1 rounded '>
+            <Button color="outline-dark" onClick={toggle} style={{ marginBottom: '1rem' }} className="text-center "><BsFolderCheck/> Task History</Button>
             <Collapse isOpen={isOpen}>
                 <Card>
                     <CardBody>

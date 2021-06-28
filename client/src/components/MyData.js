@@ -80,13 +80,6 @@ class MyData extends React.Component {
 
     }
     mapDelete() {
-        // let time= this.state.query
-        // const result = this.state.deletedList.filter(dates => {
-        //     console.log(dates.createdAt)
-        //     return dates.createdAt === this.state.query
-        // });
-        // console.log("result" + result)
-
         return this.state.deletedList.map(deleted => {
 
             return <div key={deleted._id}>
@@ -101,9 +94,9 @@ class MyData extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">{deleted.date}</th>
-                                    <td>  {deleted.body} </td> 
+                                <tr className="shadow-lg  p-1 mb-1 bg-white rounded">
+                                    <th scope="row" className='text-muted '>{deleted.date}</th>
+                                    <td className=' '>  {deleted.body} </td>
                                     <td>  <BsCheckBox className="text-danger" /></td>
 
                                 </tr>
@@ -161,7 +154,7 @@ class MyData extends React.Component {
 
         return (<div className="container-fluid ">
             <div className="row">
-                <div className="col-sm-6">
+                <div className="col-sm-6 shadow-lg  p-1 mb-2 bg-white rounded ">
 
                     {this.renderList()}
 
@@ -200,7 +193,7 @@ class MyData extends React.Component {
                         </Form>
                     </div> */}
 
-                    <div className=" shadow-lg  p-1 mb-3 bg-dark rounded  ">
+                    <div className=" shadow-lg  p-1 mb-3 rounded  ">
                         <div className='d-flex  '>
                             <DeleToggle erased={this.mapDelete()} />
 

@@ -3,7 +3,6 @@ import React from 'react';
 
 import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
-import CalendarComponent from './components/CalendarComponent';
 import { BsListTask} from "react-icons/bs";
 
 import TodoForm from './components/TodoForm';
