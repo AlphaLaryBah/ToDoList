@@ -16,27 +16,18 @@ class TodoForm extends React.Component{
         };
         this.handleTaskInputChange = this.handleTaskInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
-
     }
-   
 
-
-     handleTaskInputChange(e) {
+ handleTaskInputChange(e) {
         this.setState({ task: e.target.value })
 
     }
  handleSubmit(e) {
      e.preventDefault();
-
-
         //SERVER
         const payload = {
             body: this.state.task,
-
         }
-        //  console.log(`payload Todoform : ${payload}`);
-
         axios({
             url: 'http://localhost:8080/api/save',
             method: 'POST',
@@ -59,8 +50,6 @@ class TodoForm extends React.Component{
             <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
                 <Form onSubmit={this.handleSubmit} className="form-control rounded ">
                     <div className="container-fluid">
-                    
-
                         <div className="rov">
                             <div className="col">
                                 <Input
@@ -74,23 +63,14 @@ class TodoForm extends React.Component{
 
                                     <Button
                                         type="submit"
-                                        className=" form-control  mt-3 text-center rounded"
-                                    
+                                        className=" form-control  mt-3 text-center rounded"                                    
                                     ><BsPlusCircle /> Add To List</Button>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </Form>
             </div>
-
-
-
-
-
         );
     }
 }
@@ -99,8 +79,6 @@ const mapStateToProps = (state) => {
     // console.log(state)
     //key dataFromServer initialized combinerReducers
     return { dataFromServer: state.dataFromServer };
-
-
 }
 
 export default connect(mapStateToProps, { fetchData, selectItem })(TodoForm);

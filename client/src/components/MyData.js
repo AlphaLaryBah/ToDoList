@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchData, selectItem } from '../redux/actions';
 import { Button, Input, Table } from 'reactstrap';
-import { BsCheckBox, BsTrash} from "react-icons/bs";
+import { BsCheckBox, BsTrash } from "react-icons/bs";
 import axios from 'axios';
 import './Mydata.css';
-import DeleToggle from "./DeteToggle";
+import DeleToggle from "./DeleToggle";
 import TogleCalend from './TogleCalend'
 
 class MyData extends React.Component {
@@ -19,8 +19,6 @@ class MyData extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-
-
 
     handleTaskInputChange(event) {
         const target = event.target;
@@ -41,8 +39,6 @@ class MyData extends React.Component {
             body: this.state.query,
 
         }
-        //  console.log(`payload Todoform : ${payload}`);
-
         axios({
             url: 'http://localhost:8080/api/query',
             method: 'POST',
@@ -56,8 +52,6 @@ class MyData extends React.Component {
 
             })
         this.setState({ query: "" })
-
-
     }
     componentDidMount() {
         //function from actions
@@ -112,37 +106,25 @@ class MyData extends React.Component {
         })
 
     }
-
-
-
     renderList() {
-
         return this.props.dataFromServer.map(list => {
-
             return (<div key={list._id} className="border-bottom p-1 container-fluid" >
                 <div className="row">
-                    <div className="col d-flex justify-content-end">
+                    <div className=" col-lg-12  d-flex justify-content-end">
                         <form>
                             <Button type="submit" className="float-right" outline color="danger" onClick={() => this.props.selectItem(list)}>Delete <BsTrash /></Button>
                         </form>
                     </div>
-                    {/* <div className="row"> */}
-
                     <div className="col-sm-12 d-flex justify-content-start">
                         <Input addon type="checkbox" value={list._id} className="ml-0" />
                         <p key={list.body}>{list.body}</p>
                     </div>
                     <div className="col d-flex justify-content-start">
                         <p>{list.date}</p>
-
                     </div>
-
                 </div>
-
-
             </div>
             )
-
         });
     }
 
@@ -160,7 +142,8 @@ class MyData extends React.Component {
 
                 </div>
                 <div className="col-sm-6">
-                    {/* <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
+                    {/* DATA FOR QUERY BY DATE
+                     <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
                         <label>                        Find Old List By Date
                         </label>
                         <Form onSubmit={this.handleSubmit} className="form-control rounded ">
@@ -191,21 +174,21 @@ class MyData extends React.Component {
                             </div>
 
                         </Form>
-                    </div> */}
+                    </div>  */}
 
                     <div className=" shadow-lg  p-1 mb-3 rounded  ">
                         <div className='d-flex  '>
                             <DeleToggle erased={this.mapDelete()} />
 
                         </div>
-                        
-
-                    
-                    <div className=' '>
-                        <TogleCalend />
 
 
-                    </div>
+
+                        <div className=' '>
+                            <TogleCalend />
+
+
+                        </div>
 
                     </div>
                 </div>

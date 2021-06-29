@@ -17,8 +17,6 @@ function CalendarComponent() {
                 value={date}
                 className="shadow-lg  p-1 mb-3 bg-white rounded w-100"
             />
-            {/* {date.toString()} */}
-            {/* {console.log(date)} */}
         </div>
     );
 }

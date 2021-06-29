@@ -29,21 +29,9 @@ const todoListSchema = new Schema({
 },
     {
         timestamps: true,
-
-
-    
-    
-
 });
 
 //MODEL
 const Deleted = mongoose.model('Deleted', todoListSchema);
-
-
-// //SAVING DATA TO MONGO DATABASE
-// const data = {
-//     body: " take salt pills"
-// }
-
 
 module.exports = Deleted;

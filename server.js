@@ -28,7 +28,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //ROUTES
 const routes = require('./routes/api');
-// const deletedN= require('./routes/deletes')
 
 
 //morgan: is an HTTP request logger, tells us which http we are hitting
@@ -39,7 +38,6 @@ app.use(cors());
 
 //ROUTES
 app.use('/api', routes);
-// app.use('/api', deletedN);
 
 
 app.listen(PORT, () => console.log(` Server is Listening on Port ${PORT}`))
