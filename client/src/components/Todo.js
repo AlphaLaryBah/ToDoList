@@ -3,9 +3,6 @@
 // import { BsTrash } from "react-icons/bs";
 // import { BsCheckAll } from "react-icons/bs";
 
-
-
-
 // function Todo({ todo, toggleComplete, removeTodo }) {
 //     console.log(`todo form Todo : ${todo}`)
     
@@ -390,3 +387,63 @@
 // }
 
 // export default connect(mapStateToProps, { doneData })(MyData);
+
+
+
+/////////////////////////////////////////////////////
+
+
+//  DATA FOR QUERY BY DATE
+
+
+
+//SERVER
+        // const payload = {
+        //     body: this.state.query,
+
+        // }
+    //     axios({
+    //         url: 'http://localhost:8080/api/query',
+    //         method: 'POST',
+    //         data: payload
+    //     })
+    //         .then(() => {
+    //             console.log("Query Data has been sent to the Sever")
+    //         })
+    //         .catch(() => {
+    //             console.log(" Query Data  NOT sent to the Sever")
+
+    //         })
+    //     this.setState({ query: "" })
+//                      <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
+//                         <label>                        Find Old List By Date
+//                         </label>
+//                         <Form onSubmit={this.handleSubmit} className="form-control rounded ">
+//                             <div className="container-fluid">
+
+
+//                                 <div className="row">
+//                                     <div className="col">
+//                                          <Input
+//                                             placeholder="Enter Date"
+//                                             name="query"
+//                                             type="date"
+//                                             value={this.state.query}
+//                                             onChange={this.handleTaskInputChange} />
+                                        
+//                                             <div className="col ">
+
+//                                                 <Button
+//                                                     type="submit"
+//                                                     className=" form-control bg-primary mt-3 text-center rounded"
+
+//                                                 > Find Old Task</Button>
+//                                             </div>
+
+
+//                                     </div>
+//                                 </div>
+//                             </div>
+
+//                         </Form>
+// </div>  

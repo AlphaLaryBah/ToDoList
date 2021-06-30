@@ -23,8 +23,8 @@ const Selected = ({ selected }) => {
 
 
         });
-    
-    //SAVE DATA SELECTED API DELETE
+
+    //SAVE DATA SELECTED to API DELETE
     axios({
         url: 'http://localhost:8080/api/save',
         method: 'POST',
@@ -37,14 +37,15 @@ const Selected = ({ selected }) => {
         .catch(() => {
             console.log("Delete Data  NOT sent to the Sever")
 
-        })
+        });
+    
     if (!selected) {
         return <div> </div>
     }
     return (
-         <div className="" >
+        <div className="" >
 
-         </div>
+        </div>
     );
 
 }
@@ -52,7 +53,6 @@ const mapStateToProps = (state) => {
     return {
         selected: state.selected
     }
-
 }
 
 export default connect(mapStateToProps, { selectItem })(Selected);

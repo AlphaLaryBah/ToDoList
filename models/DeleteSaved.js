@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 let today = new Date();
 let options = {
     weekday: "long",
@@ -19,17 +18,16 @@ const todoListSchema = new Schema({
     body: {
         type: String,
         trim: true,
-        required: true 
+        required: true
     },
     date: {
         type: String,
         default: day
     }
-
 },
     {
         timestamps: true,
-});
+    });
 
 //MODEL
 const Deleted = mongoose.model('Deleted', todoListSchema);

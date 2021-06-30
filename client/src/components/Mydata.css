@@ -1,8 +1,10 @@
+
+/* linthrough for chexbox */
 input:checked+p {
   text-decoration: line-through;
-  text-decoration-color: red;
+  text-decoration-color: blue;
 }
 
 input[type="checkbox"] {
-  margin: 20px;
+  margin: 6px;
 }

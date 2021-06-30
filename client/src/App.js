@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
-import { BsListTask} from "react-icons/bs";
+import { BsListTask } from "react-icons/bs";
 
 import TodoForm from './components/TodoForm';
 import MyData from './components/MyData';
@@ -15,7 +15,7 @@ function App() {
 
         <Card className="col-sm-12 col-md-12  w-100 ">
           <CardBody>
-            <CardTitle tag="h5" className=" rounded text-center"><BsListTask className="text-danger"/> TO DO LIST</CardTitle>
+            <CardTitle tag="h5" className=" rounded text-center"><BsListTask className="text-danger" /> TO DO LIST</CardTitle>
             <CardSubtitle tag="h6" className="mb-2 text-muted">
             </CardSubtitle>
             <CardText className=" ">
@@ -39,8 +39,5 @@ function App() {
     </div>
   );
 }
-
-
-
 
 export default App;

@@ -41,7 +41,7 @@ router.post("/save", (req, res) => {
     })
 });
 
-//DELETES ALL
+//DELETES 
 router.post("/delete", (req, res) => {
     // console.log('Delete:', req.body.delete)
     const data = req.body.delete;

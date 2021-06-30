@@ -1,16 +1,14 @@
 import React from 'react';
-// import uuid from 'uuid';
 import { Button, Form, Input } from 'reactstrap';
 import { BsPlusCircle } from "react-icons/bs";
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { fetchData} from '../redux/actions';
+import { fetchData } from '../redux/actions';
 import { selectItem } from '../redux/actions';
 
-class TodoForm extends React.Component{
+class TodoForm extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             task: ""
         };
@@ -18,13 +16,14 @@ class TodoForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
- handleTaskInputChange(e) {
+    handleTaskInputChange(e) {
         this.setState({ task: e.target.value })
-
     }
- handleSubmit(e) {
-     e.preventDefault();
-        //SERVER
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        //SERVERSENDS INPUT TO SERVER
         const payload = {
             body: this.state.task,
         }
@@ -42,7 +41,7 @@ class TodoForm extends React.Component{
                 console.log("Data  NOT sent to the Sever")
 
             })
-       this.setState({task:""})
+        this.setState({ task: "" })
 
     }
     render() {
@@ -57,13 +56,14 @@ class TodoForm extends React.Component{
                                     name="task"
                                     type="text"
                                     value={this.state.task}
+                                    autoComplete="off"
                                     onChange={this.handleTaskInputChange} />
-                    
+
                                 <div className="col ">
 
                                     <Button
                                         type="submit"
-                                        className=" form-control  mt-3 text-center rounded"                                    
+                                        className=" form-control  mt-3 text-center rounded"
                                     ><BsPlusCircle /> Add To List</Button>
                                 </div>
                             </div>

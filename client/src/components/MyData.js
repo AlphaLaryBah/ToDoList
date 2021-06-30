@@ -13,7 +13,6 @@ class MyData extends React.Component {
         super(props);
         this.state = {
             deletedList: [],
-            query: ""
         };
         this.handleTaskInputChange = this.handleTaskInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,36 +29,18 @@ class MyData extends React.Component {
         });
 
     }
+
     handleSubmit(e) {
         e.preventDefault();
-
-        console.log(this.state.query)
-        //SERVER
-        const payload = {
-            body: this.state.query,
-
-        }
-        axios({
-            url: 'http://localhost:8080/api/query',
-            method: 'POST',
-            data: payload
-        })
-            .then(() => {
-                console.log("Query Data has been sent to the Sever")
-            })
-            .catch(() => {
-                console.log(" Query Data  NOT sent to the Sever")
-
-            })
-        this.setState({ query: "" })
     }
+
     componentDidMount() {
         //function from actions
         this.props.fetchData();
+        //call deleletd data function
         this.getDeletData();
-
-
     }
+    //GET DELETED DATA FROM MONGOOSE
     getDeletData = () => {
         axios.get('http://localhost:8080/api/delete')
             .then((response) => {
@@ -69,9 +50,7 @@ class MyData extends React.Component {
             })
             .catch(() => {
                 console.log(" Deleted Data  NOT  received")
-
             })
-
     }
     mapDelete() {
         return this.state.deletedList.map(deleted => {
@@ -84,27 +63,20 @@ class MyData extends React.Component {
                                 <tr>
                                     <th> Created</th>
                                     <th> Task</th>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr className="shadow-lg  p-1 mb-1 bg-white rounded">
-                                    <th scope="row" className='text-muted '>{deleted.date}</th>
+                                    <th scope="row" className='text-muted bg-dark text-light '>{deleted.date}</th>
                                     <td className=' '>  {deleted.body} </td>
                                     <td>  <BsCheckBox className="text-danger" /></td>
-
                                 </tr>
-
                             </tbody>
                         </Table>
-
                     </li>
                 </ul>
-
             </div>
-
         })
-
     }
     renderList() {
         return this.props.dataFromServer.map(list => {
@@ -128,12 +100,8 @@ class MyData extends React.Component {
         });
     }
 
-
-
     render() {
         // console.log(this.props.dataFromServer);
-
-
         return (<div className="container-fluid ">
             <div className="row">
                 <div className="col-sm-6 shadow-lg  p-1 mb-2 bg-white rounded ">
@@ -142,64 +110,19 @@ class MyData extends React.Component {
 
                 </div>
                 <div className="col-sm-6">
-                    {/* DATA FOR QUERY BY DATE
-                     <div className="d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded ">
-                        <label>                        Find Old List By Date
-                        </label>
-                        <Form onSubmit={this.handleSubmit} className="form-control rounded ">
-                            <div className="container-fluid">
-
-
-                                <div className="row">
-                                    <div className="col">
-                                         <Input
-                                            placeholder="Enter Date"
-                                            name="query"
-                                            type="date"
-                                            value={this.state.query}
-                                            onChange={this.handleTaskInputChange} />
-                                        
-                                            <div className="col ">
-
-                                                <Button
-                                                    type="submit"
-                                                    className=" form-control bg-primary mt-3 text-center rounded"
-
-                                                > Find Old Task</Button>
-                                            </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </Form>
-                    </div>  */}
-
                     <div className=" shadow-lg  p-1 mb-3 rounded  ">
                         <div className='d-flex  '>
                             <DeleToggle erased={this.mapDelete()} />
-
                         </div>
-
-
-
                         <div className=' '>
                             <TogleCalend />
-
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
-
-
         );
     }
-
 }
 
 //getting all of the Data from the store map through and return it as props
@@ -207,8 +130,6 @@ const mapStateToProps = (state) => {
     //    console.log(state)
     //key dataFromServer initialized combinerReducers
     return { dataFromServer: state.dataFromServer };
-
-
 }
 
 export default connect(mapStateToProps, { fetchData, selectItem })(MyData);
