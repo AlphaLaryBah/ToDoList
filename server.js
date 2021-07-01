@@ -6,7 +6,7 @@ require('dotenv').config();
 const path = require('path');
 
 const app = express();
-
+//process por is fallback for heroku need to have
 const PORT = process.env.PORT || 8080;
 
 const MONGODB_URI = process.env.MONGODB_URI
@@ -34,6 +34,10 @@ app.use(cors());
 
 //ROUTES
 app.use('/api', routes);
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+    
+}
 
 
 app.listen(PORT, () => console.log(` Server is Listening on Port ${PORT}`))
