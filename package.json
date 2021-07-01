@@ -8,6 +8,7 @@
     "start": "node server.js",
     "client": "cd client && npm start",
     "dev": "concurrently -n 'server, client' \"nodemon server.js\" \" npm run client\""
+
   },
   "author": "Alpha Bah",
   "license": "ISC",
