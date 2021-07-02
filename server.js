@@ -9,9 +9,8 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 ////
-// const MONGODB_URI =  'mongodb+srv://alpha:Rahim12@todolist.fiyog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-// process.env.MONGODB_URI
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todolistDB", {
+const MONGODB_URI = process.env.MONGODB_URI
+mongoose.connect(MONGODB_URI || "mongodb://localhost:27017/todolistDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
