@@ -8,7 +8,7 @@ const path = require('path');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
-////MONGODB_URI=mongodb+srv://alpha:Rahim12@todolist.fiyog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+////
 // const MONGODB_URI =  'mongodb+srv://alpha:Rahim12@todolist.fiyog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 // process.env.MONGODB_URI
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todolistDB", {
