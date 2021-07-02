@@ -8,9 +8,10 @@ const path = require('path');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
-
-const MONGODB_URI = process.env.MONGODB_URI
-mongoose.connect(MONGODB_URI || "mongodb://localhost:27017/todolistDB", {
+////MONGODB_URI=mongodb+srv://alpha:Rahim12@todolist.fiyog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+// const MONGODB_URI =  'mongodb+srv://alpha:Rahim12@todolist.fiyog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+// process.env.MONGODB_URI
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todolistDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -35,5 +36,10 @@ app.use(cors());
 //ROUTES
 app.use('/api', routes);
 
+if (process.env.NODE_ENV === 'production') {
+
+    app.use(express.static('client/build'));
+}
+//https://merntasktodolist.herokuapp.com/ | https://git.heroku.com/merntasktodolist.g
 
 app.listen(PORT, () => console.log(` Server is Listening on Port ${PORT}`))

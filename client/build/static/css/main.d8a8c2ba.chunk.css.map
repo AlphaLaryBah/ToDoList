@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Mydata.css"],"names":[],"mappings":"AAEA,gBACE,4BAA6B,CAC7B,kCAA2B,CAA3B,0BACF,CAEA,qBACE,UACF","file":"main.d8a8c2ba.chunk.css","sourcesContent":["\n/* linthrough for chexbox */\ninput:checked+p {\n  text-decoration: line-through;\n  text-decoration-color: blue;\n}\n\ninput[type=\"checkbox\"] {\n  margin: 6px;\n}\n"]}
