@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 8080;
 mongoose.connect(process.env.MONGODB_URI|| "mongodb://localhost:27017/todolistDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useCreateIndex: true,
+
 });
 
 mongoose.connection.on('connected', () => {
