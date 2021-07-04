@@ -38,6 +38,7 @@ app.use('/api', routes);
 if (process.env.NODE_ENV === 'production') {
 
     app.use(express.static('client/build'));
+    require('dotenv').config()
 }
 
 app.listen(PORT, () => console.log(` Server is Listening on Port ${PORT}`))
