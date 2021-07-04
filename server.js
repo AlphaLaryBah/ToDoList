@@ -2,15 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cors = require('cors');
-// require('dotenv').config();
+require('dotenv').config();
 const path = require('path');
 
 const app = express();
 
 const PORT = process.env.PORT || 8080;
 ////
-// const MONGODB_URI = process.env.MONGODB_URI
-mongoose.connect(process.env.MONGODB_URI|| "mongodb://localhost:27017/todolistDB", {
+ const MONGODB_URI = process.env.MONGODB_URI
+mongoose.connect(MONGODB_URI|| "mongodb://localhost:27017/todolistDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -41,6 +41,5 @@ if (process.env.NODE_ENV === 'production') {
 
     app.use(express.static('client/build'));
 }
-//https://merntasktodolist.herokuapp.com/ | https://git.heroku.com/merntasktodolist.g
 
 app.listen(PORT, () => console.log(` Server is Listening on Port ${PORT}`))
