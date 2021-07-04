@@ -11,7 +11,7 @@ const Selected = ({ selected }) => {
 
     //SAVE DATA SELECTED API DELETE
     axios({
-        url: 'http://localhost:8080/api/delete',
+        url: 'api/delete',
         method: 'POST',
         data: payload
     })
@@ -26,7 +26,7 @@ const Selected = ({ selected }) => {
 
     //SAVE DATA SELECTED to API DELETE
     axios({
-        url: 'http://localhost:8080/api/save',
+        url: 'api/save',
         method: 'POST',
         data: payload
     })
@@ -38,7 +38,7 @@ const Selected = ({ selected }) => {
             console.log("Delete Data  NOT sent to the Sever")
 
         });
-    
+
     if (!selected) {
         return <div> </div>
     }

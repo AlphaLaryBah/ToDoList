@@ -28,7 +28,7 @@ class TodoForm extends React.Component {
             body: this.state.task,
         }
         axios({
-            url: 'http://localhost:8080/api/save',
+            url: 'api/save',
             method: 'POST',
             data: payload
         })

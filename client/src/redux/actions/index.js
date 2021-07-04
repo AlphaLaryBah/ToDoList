@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const fetchData = () => async dispatch => {
-    const response = await axios.get('http://localhost:8080/api');
+    const response = await axios.get('/api');
     dispatch({ type: 'FETCH_DATA', payload: response.data });
     //  console.log(response);
 };

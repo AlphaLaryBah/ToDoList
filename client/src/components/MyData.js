@@ -42,7 +42,7 @@ class MyData extends React.Component {
     }
     //GET DELETED DATA FROM MONGOOSE
     getDeletData = () => {
-        axios.get('http://localhost:8080/api/delete')
+        axios.get('/api/delete')
             .then((response) => {
                 // console.log(response.data)
                 this.setState({ deletedList: response.data })
