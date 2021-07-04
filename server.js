@@ -40,9 +40,9 @@ app.use('/api', routes);
     //  "install-client":"cd client && npm install",
     // "heroku-postbuild":"npm run install-client && npm run build",
 
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
 
-//     app.use(express.static('client/build'));
-// }
+    app.use(express.static('client/build'));
+}
 
 app.listen(PORT, () => console.log(` Server is Listening on Port ${PORT}`))
