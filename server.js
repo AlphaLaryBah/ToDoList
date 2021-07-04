@@ -8,9 +8,7 @@ const path = require('path');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
-////
- const MONGODB_URI = process.env.MONGODB_URI
-mongoose.connect(MONGODB_URI|| "mongodb://localhost:27017/todolistDB", {
+mongoose.connect(process.env.MONGODB_URI|| "mongodb://localhost:27017/todolistDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -36,9 +34,6 @@ app.use(cors());
 
 //ROUTES
 app.use('/api', routes);
-// "build": "cd client && npm run build",
-    //  "install-client":"cd client && npm install",
-    // "heroku-postbuild":"npm run install-client && npm run build",
 
 if (process.env.NODE_ENV === 'production') {
 
